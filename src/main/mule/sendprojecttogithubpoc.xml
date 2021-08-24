@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="ffaaeb85-0273-4235-b3c8-b60191916ba8" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="sendprojecttogithubpocFlow" doc:id="a0a90da1-b8ea-44bf-9abc-e243df6dc8de" >
+		<http:listener doc:name="Listener" doc:id="4380aad9-d136-4573-9c17-10ced53ddddb" config-ref="HTTP_Listener_config" path="/send"/>
+		<set-payload value="applyinggithub" doc:name="Set Payload" doc:id="dbb2fc83-cbb9-4958-b1d7-9937577d2248" />
+		<logger level="INFO" doc:name="Logger" doc:id="54946814-dcda-45ba-a6e7-2c036e35a9bd" message="github"/>
+	</flow>
+</mule>
